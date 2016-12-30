@@ -1,11 +1,13 @@
 package com.zheng;
 
+import java.util.Set;
+
+import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
+
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Optional;
 import com.google.common.base.Strings;
-import org.junit.Test;
-
-import java.util.Set;
 
 /**
     Guava中是不允许存在null键值的，如果存在null就直接报错。
@@ -75,6 +77,19 @@ public class NullTest {
         //将null转为""
         String value3 = Strings.nullToEmpty(null);
         System.out.println("".equals(value3));
+    }
+    
+    /**
+     * StringUtils会判断是否是null, 空串或者空白字符
+     *
+     * @author zhenglian
+     * @data 2016年12月30日 下午4:34:55
+     */
+    @Test
+    public void testStringUtils() {
+    	String str = "       ";
+    	boolean value = StringUtils.isBlank(str);
+    	System.out.println(value);
     }
     
     
