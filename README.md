@@ -10,3 +10,4 @@
 	8.添加Table,两个键对应一个值，可以把它看做一个Excel,通过row,col定位value，遍历采用cellSet()转化为单元格操作
 	9.添加RangeSet,RangeMap支持范围值
 	10.添加各个集合工具类常用方法测试
+	11.添加拓展工具类测试ForwardingXXX, PeekingIterator/AbstractInterator/AbstractsequentialIterator
