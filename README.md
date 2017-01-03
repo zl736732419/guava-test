@@ -11,3 +11,4 @@
 	9.添加RangeSet,RangeMap支持范围值
 	10.添加各个集合工具类常用方法测试
 	11.添加拓展工具类测试ForwardingXXX, PeekingIterator/AbstractInterator/AbstractsequentialIterator
+	12.添加Predicates测试，主要用于filter/transform
