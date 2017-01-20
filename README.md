@@ -13,3 +13,5 @@
 	11.添加拓展工具类测试ForwardingXXX, PeekingIterator/AbstractInterator/AbstractsequentialIterator
 	12.添加Predicates测试，主要用于filter/transform
 	13.添加Strings测试,主要使用Joiner/Splitter/CharMatcher/Charsets/CaseFormat
+	14.添加Streams关闭流处理方式，采用try-with-resources或者ByteSource/ByteSink,CharSource/CharSink代替Stream处理
+	15.添加事件总线EventBus
