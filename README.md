@@ -14,4 +14,5 @@
 	12.添加Predicates测试，主要用于filter/transform
 	13.添加Strings测试,主要使用Joiner/Splitter/CharMatcher/Charsets/CaseFormat
 	14.添加Streams关闭流处理方式，采用try-with-resources或者ByteSource/ByteSink,CharSource/CharSink代替Stream处理
-	15.添加事件总线EventBus
+	15.添加事件总线EventBus，注意AsyncEventBus采用多线程执行，在编写测试用例的时候需要让主线程一直执行，不然看不到结果(子线程来不及执行就已经结束了),
+	EventBus则是在单线程中执行，内部采用自定义的枚举类实现Executor来构造一个执行器进行事件处理的

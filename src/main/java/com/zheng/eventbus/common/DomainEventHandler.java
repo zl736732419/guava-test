@@ -8,7 +8,11 @@ package com.zheng.eventbus.common;
  * @data 2017年1月20日 下午4:01:05
  * @param <T>
  */
-public interface DomainEventHandler<T extends DomainEvent> {
+public abstract class DomainEventHandler<T extends DomainEvent> {
+	
+	public DomainEventHandler() {
+		registerToBus();
+	}
 	
 	/**
 	 * 将自身通过DomainEventRegisterCenter注册到事件总线上
@@ -16,7 +20,7 @@ public interface DomainEventHandler<T extends DomainEvent> {
 	 * @author zhenglian
 	 * @data 2017年1月20日 下午4:47:44
 	 */
-	void registerToBus();
+	protected abstract void registerToBus();
 	
 	/**
 	 * 事件处理
@@ -25,5 +29,5 @@ public interface DomainEventHandler<T extends DomainEvent> {
 	 * @data 2017年1月20日 下午4:06:53
 	 * @param t
 	 */
-	void handleEvent(T event);
+	protected abstract void handle(T event);
 }

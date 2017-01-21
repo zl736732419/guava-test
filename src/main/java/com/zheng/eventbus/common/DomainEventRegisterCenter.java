@@ -14,6 +14,7 @@ import com.google.common.eventbus.EventBus;
 public class DomainEventRegisterCenter {
 	public static DomainEventRegisterCenter instance = null;
 	private final AsyncEventBus eventBus = new AsyncEventBus(Executors.newCachedThreadPool(new MyThreadFactory()));
+//	private final EventBus eventBus = new EventBus(); //单线程中执行，内部执行器其实是一个实现Executor的枚举
 
 	private DomainEventRegisterCenter() {
 		registerDeadEventHandler();
@@ -21,18 +22,6 @@ public class DomainEventRegisterCenter {
 
 	private void registerDeadEventHandler() {
 		eventBus.register(new DeadEventHandler());
-	}
-
-	public void register(DomainEventHandler<? extends DomainEvent> handler) {
-		eventBus.register(handler);
-	}
-
-	public void unregister(DomainEventHandler<? extends DomainEvent> handler) {
-		eventBus.unregister(handler);
-	}
-
-	public void publish(DomainEvent event) {
-		eventBus.post(event);
 	}
 
 	public EventBus getEventBus() {
@@ -45,5 +34,17 @@ public class DomainEventRegisterCenter {
 		}
 
 		return instance;
+	}
+
+	public void registerDomainHandler(DomainEventHandler<? extends DomainEvent> handler) {
+		eventBus.register(handler);
+	}
+
+	public void unregisterDomainHandler(DomainEventHandler<? extends DomainEvent> handler) {
+		eventBus.unregister(handler);
+	}
+
+	public <T> void publish(T event) {
+		eventBus.post(event);
 	}
 }
