@@ -18,7 +18,7 @@ public class DeadEventHandler {
 	@Subscribe
 	public void handle(DeadEvent event) {
 		System.out.println("处理事件异常，进入DeadEventHandler...");
-		System.out.println("event: " + event.getEvent());
+		System.out.println("no subscribers for event: " + event.getEvent());
 		System.out.println("source: " + event.getSource());
 	}
 }
