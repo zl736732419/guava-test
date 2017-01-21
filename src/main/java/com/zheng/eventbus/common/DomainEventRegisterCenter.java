@@ -13,11 +13,17 @@ import com.google.common.eventbus.EventBus;
  */
 public class DomainEventRegisterCenter {
 	public static DomainEventRegisterCenter instance = null;
-	private final AsyncEventBus eventBus = new AsyncEventBus(Executors.newCachedThreadPool(new MyThreadFactory()));
+	private EventBus eventBus = new AsyncEventBus(Executors.newCachedThreadPool(new MyThreadFactory()));
 //	private final EventBus eventBus = new EventBus(); //单线程中执行，内部执行器其实是一个实现Executor的枚举
 
 	private DomainEventRegisterCenter() {
 		registerDeadEventHandler();
+	}
+	
+	public DomainEventRegisterCenter setEventBus(EventBus eventBus) {
+		this.eventBus = eventBus;
+		registerDeadEventHandler();
+		return this;
 	}
 
 	private void registerDeadEventHandler() {

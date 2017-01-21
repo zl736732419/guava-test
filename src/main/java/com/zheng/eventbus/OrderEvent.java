@@ -10,7 +10,7 @@ import com.zheng.eventbus.common.DomainEvent;
  * @author zhenglian
  * @data 2017年1月20日 下午4:50:02
  */
-public class OrderEvent implements DomainEvent {
+public class OrderEvent extends DomainEvent {
 	/**
 	 * 这里需要根据具体业务逻辑进行调整 这里只是测试
 	 */
@@ -26,11 +26,6 @@ public class OrderEvent implements DomainEvent {
 
 	public void setDetails(List<String> details) {
 		this.details = details;
-	}
-
-	@Override
-	public long emitTime() {
-		return System.currentTimeMillis();
 	}
 
 	@Override

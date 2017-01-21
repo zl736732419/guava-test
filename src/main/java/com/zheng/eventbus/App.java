@@ -5,11 +5,12 @@ import java.util.List;
 import org.junit.Test;
 
 import com.google.common.collect.Lists;
+import com.google.common.eventbus.EventBus;
 import com.zheng.eventbus.common.DomainEventRegisterCenter;
 
 public class App {
 	@Test
-	public void testEvent() throws InterruptedException {
+	public void testAsyncEventBus() throws InterruptedException {
 		new OrderEventHandler(); // 创建处理器，在创建时进行注册，这里只需要new出来即可
 		List<String> details = Lists.newArrayList("白菜", "廋肉", "作料", "饮料");
 		OrderEvent event = new OrderEvent(details);
@@ -21,6 +22,17 @@ public class App {
 			Thread.sleep(1000);
 			System.out.println(System.currentTimeMillis());
 		}
+	}
+	
+	@Test
+	public void testEventBus() throws InterruptedException {
+		EventBus eventBus = new EventBus();
+		DomainEventRegisterCenter center = DomainEventRegisterCenter.getInstance().setEventBus(eventBus);
+		
+		new OrderEventHandler(); // 创建处理器，在创建时进行注册，这里只需要new出来即可
+		List<String> details = Lists.newArrayList("白菜", "廋肉", "作料", "饮料");
+		OrderEvent event = new OrderEvent(details);
+		center.publish(event);
 	}
 
 }

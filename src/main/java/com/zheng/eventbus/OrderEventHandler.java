@@ -1,10 +1,7 @@
 package com.zheng.eventbus;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
-import com.google.common.eventbus.Subscribe;
 import com.zheng.eventbus.common.DomainEventHandler;
 import com.zheng.eventbus.common.DomainEventRegisterCenter;
 
@@ -16,14 +13,11 @@ public class OrderEventHandler extends DomainEventHandler<OrderEvent> {
 	}
 
 	@Override
-	@Subscribe
-	public void handle(OrderEvent event) {
-		String time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(event.emitTime()));
-		System.out.println(String.format("处理：%s, 触发时间：%s", event.eventName(), time));
+	public void handleEvent(OrderEvent event) {
 		List<String> details = event.getDetails();
+		System.out.println("--------订单明细---------");
 		for (String detail : details) {
 			System.out.println(detail);
 		}
 	}
-
 }
